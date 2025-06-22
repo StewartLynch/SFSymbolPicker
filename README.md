@@ -148,4 +148,4 @@ This project is licensed under the MIT License.
 
 ## 🔗 More Info
 
-To learn how this package was built and how to customize it, check out the accompanying [YouTube tutorial](https://www.youtube.com/@StewartLynch) by [@StewartLynch](https://github.com/StewartLynch).
+To learn how this package was built and how to customize it, check out the accompanying [YouTube tutorial]([https://www.youtube.com/@StewartLynch](https://youtu.be/mdQqWy0Vk_w)) by [@StewartLynch](https://github.com/StewartLynch).
