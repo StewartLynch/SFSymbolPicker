@@ -62,4 +62,6 @@ public enum CategoryEnum: String {
     @available(iOS 19, macOS 19, *)
 //    case draw, variable -- Draw not in meta plist for symbols as of SFSymbols 7 Beta 2
     case variable
+    #warning("Move this case to the lastest OS release")
+    case whatsnew
 }

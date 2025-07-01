@@ -32,9 +32,11 @@ public class SymbolLoader {
             .sorted(using: KeyPathComparator(\.key))
             .filter { $0.key != "all"}
         categories.insert(Category.uncategorized, at: 0)
-        // Remove What's New as it makes no sense
-        if let whatsNewIndex = categories.firstIndex(where: {$0.key == "whatsnew"}) {
-            categories.remove(at: whatsNewIndex)
+        #warning("Remove What's New if not on lastest release")
+        if #available(iOS 19, macOS 19, *) {
+            if let whatsNewIndex = categories.firstIndex(where: {$0.key == "whatsnew"}) {
+                categories.remove(at: whatsNewIndex)
+            }
         }
         //
         #warning("As of SFSymbols 7, the draw category has no members so remove it")
