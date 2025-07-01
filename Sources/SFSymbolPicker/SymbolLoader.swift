@@ -33,7 +33,7 @@ public class SymbolLoader {
             .filter { $0.key != "all"}
         categories.insert(Category.uncategorized, at: 0)
         #warning("Remove What's New if not on lastest release")
-        if #available(iOS 19, macOS 19, *) {
+        if #unavailable(iOS 19, macOS 19 ) {
             if let whatsNewIndex = categories.firstIndex(where: {$0.key == "whatsnew"}) {
                 categories.remove(at: whatsNewIndex)
             }
