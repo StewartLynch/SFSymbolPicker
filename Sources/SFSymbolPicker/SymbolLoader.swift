@@ -19,7 +19,7 @@ import Foundation
 
 @Observable
 public class SymbolLoader {
-    var categories: [Category] = []
+    public var categories: [Category] = []
     var symbols: [Symbol] = []
     
    public init() {
@@ -32,7 +32,30 @@ public class SymbolLoader {
             .sorted(using: KeyPathComparator(\.key))
             .filter { $0.key != "all"}
         categories.insert(Category.uncategorized, at: 0)
+        // Remove What's New as it makes no sense
+        if let whatsNewIndex = categories.firstIndex(where: {$0.key == "whatsnew"}) {
+            categories.remove(at: whatsNewIndex)
+        }
+        //
+        #warning("As of SFSymbols 7, the draw category has no members so remove it")
+        if let drawIndex = categories.firstIndex(where: {$0.key == "draw"}) {
+            categories.remove(at: drawIndex)
+        }
+        
+        #warning("Update every annual release")
+        // Remove if not available
+        if #unavailable(iOS 19, macOS 19) {
+            // remove the categories draw and variable
+            let categoriesToRemove = ["draw", "variable"]
+            categoriesToRemove.forEach { category in
+                if let categoryToRemove = categories.firstIndex(where: {$0.key == category}) {
+                    categories.remove(at: categoryToRemove)
+                }
+            }
+        }
+        
         let symbolCategoriesDict = decodePlist([String : [String]].self, from: "symbol_categories")
+
         let symbolSearchTermsDict = decodePlist([String : [String]].self, from: "symbol_search")
         let symbolAvailability = decodePlist(Symbol_Availability.self, from: "name_availability")
         for (name, releaseYear) in symbolAvailability.symbols {
@@ -48,15 +71,24 @@ public class SymbolLoader {
             let osVersions = osAvailabilityDict.map { os, version in
                 OSVersion(os: os, version: version)
             }
-            symbols.append(
-                Symbol(
-                    name: name,
-                    releaseYear: releaseYear,
-                    categories: symbolCategories,
-                    searchTerms: searchTerms,
-                    osVersions: osVersions
-                )
+            let symbolToAdd =  Symbol(
+                name: name,
+                releaseYear: releaseYear,
+                categories: symbolCategories,
+                searchTerms: searchTerms,
+                osVersions: osVersions
             )
+            
+            // This is the original release
+            if Double(symbolToAdd.releaseYear)! < 2025 {
+                symbols.append(symbolToAdd)
+            }
+            
+            if #available(iOS 19, macOS 19, *) {
+                if Double(symbolToAdd.releaseYear)! >= 2025 {
+                    symbols.append(symbolToAdd)
+                }
+            }
         }
         symbols.sort(using: KeyPathComparator(\.name))
     }

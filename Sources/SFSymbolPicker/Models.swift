@@ -18,9 +18,9 @@
 
 import Foundation
 
-struct Category: Decodable {
+public struct Category: Decodable {
     let icon: String
-    let key: String
+    public let key: String
     let label: String
     static var uncategorized: Category {
         Category(icon: "questionmark.circle", key: "uncategorized", label: "Uncategorized")
@@ -57,5 +57,9 @@ struct Symbol {
 
 
 public enum CategoryEnum: String {
-    case uncategorized, accessibility, arrows, automotive, cameraandphotos, commerce, communication, connectivity, devices, editing, fitness, gaming, health, home, human, indices, keyboard, maps, math, media, multicolor, nature, objectsandtools, privacyandsecurity, shapes, textformatting, time, transportation, variablecolor, weather, whatsnew
+    case uncategorized, accessibility, arrows, automotive, cameraandphotos, commerce, communication, connectivity, devices, editing, fitness, gaming, health, home, human, indices, keyboard, maps, math, media, multicolor, nature, objectsandtools, privacyandsecurity, shapes, textformatting, time, transportation, variablecolor, weather
+#warning("Update every annual release")
+    @available(iOS 19, macOS 19, *)
+//    case draw, variable -- Draw not in meta plist for symbols as of SFSymbols 7 Beta 2
+    case variable
 }
