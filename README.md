@@ -140,6 +140,31 @@ These are decoded internally to provide metadata and search capability for SF Sy
 
 ---
 
+## 💻 Demo App
+
+This repository includes a fully working **demo app** to showcase how to use `SFSymbolPicker` in a real SwiftUI project.
+
+### How to run it
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/StewartLynch/SFSymbolPicker.git
+   ```
+
+2. Open the demo app project:
+
+   ```
+   DemoApp/SFSymbolPickerDemo/SFSymbolPickerDemo.xcodeproj
+   ```
+
+3. Select a simulator or your device and build & run.
+
+The demo app illustrates multiple use cases, including presenting the picker as a sheet or popover, and filtering by category or search term.  
+Feel free to explore or modify it to experiment with different configurations.
+
+## 
+
 ## 📄 License
 
 This project is licensed under the MIT License.
