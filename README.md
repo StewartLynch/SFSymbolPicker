@@ -37,6 +37,26 @@ You can add `SFSymbolPicker` to your project using [Swift Package Manager](https
 
 ---
 
+### Installing the experimental `os26` branch
+
+If you'd like to try the experimental `os26` branch that will reveal new symbols and categories that will be made available in iOS26 and macOS26 then install that branch instead.
+
+In Xcode:
+
+1. Open your project.
+2. Go to **File > Add Packages…**
+3. Enter the package URL:
+
+```swift
+https://github.com/StewartLynch/EmojiPicker
+```
+
+4. Click **Branch** instead of Version, and enter: `os26`
+
+> ⚠️ **Warning:** The os26 branch is experimental and may contain unfinished or breaking changes. Use it at your own risk.
+
+------
+
 ## 🚀 Usage
 
 Here's a quick example of how to use `SFSymbolPicker`:
