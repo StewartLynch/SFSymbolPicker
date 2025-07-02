@@ -57,11 +57,8 @@ struct Symbol {
 
 
 public enum CategoryEnum: String {
-    case uncategorized, accessibility, arrows, automotive, cameraandphotos, commerce, communication, connectivity, devices, editing, fitness, gaming, health, home, human, indices, keyboard, maps, math, media, multicolor, nature, objectsandtools, privacyandsecurity, shapes, textformatting, time, transportation, variablecolor, weather
+    case uncategorized, accessibility, arrows, automotive, cameraandphotos, commerce, communication, connectivity, devices, editing, fitness, gaming, health, home, human, indices, keyboard, maps, math, media, multicolor, nature, objectsandtools, privacyandsecurity, shapes, textformatting, time, transportation, variable, weather
 #warning("Update every annual release")
     @available(iOS 19, macOS 19, *)
-//    case draw, variable -- Draw not in meta plist for symbols as of SFSymbols 7 Beta 2
-    case variable
-    #warning("Move this case to the lastest OS release")
     case whatsnew
 }

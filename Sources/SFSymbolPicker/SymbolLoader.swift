@@ -44,17 +44,17 @@ public class SymbolLoader {
             categories.remove(at: drawIndex)
         }
         
-        #warning("Update every annual release")
-        // Remove if not available
-        if #unavailable(iOS 19, macOS 19) {
-            // remove the categories draw and variable
-            let categoriesToRemove = ["draw", "variable"]
-            categoriesToRemove.forEach { category in
-                if let categoryToRemove = categories.firstIndex(where: {$0.key == category}) {
-                    categories.remove(at: categoryToRemove)
-                }
-            }
-        }
+//        #warning("Update every annual release")
+//        // Remove if not available
+//        if #unavailable(iOS 19, macOS 19) {
+//            // remove the categories draw and variable
+//            let categoriesToRemove = ["draw"]
+//            categoriesToRemove.forEach { category in
+//                if let categoryToRemove = categories.firstIndex(where: {$0.key == category}) {
+//                    categories.remove(at: categoryToRemove)
+//                }
+//            }
+//        }
         
         let symbolCategoriesDict = decodePlist([String : [String]].self, from: "symbol_categories")
 
