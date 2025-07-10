@@ -77,7 +77,7 @@ var body: some View {
         }
     }
     .sheet(isPresented: $showPicker) {
-        SymbolPickerView(
+        SymbolView(
             loader: loader
             selectedSymbol: $allCategoriesImage
         )
