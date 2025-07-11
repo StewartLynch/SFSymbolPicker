@@ -25,12 +25,14 @@ public struct SymbolView: View {
     let searchTerm: String
     @State private var selectedCategory: String
     @State private var searchText: String
+    let withDismiss: Bool
     
    public  init(
         loader: SymbolLoader,
         selectedSymbol: Binding<String>,
         limitedCategories: [CategoryEnum] = [],
         searchTerm: String = "",
+        withDismiss:Bool = true
     ) {
         self.loader = loader
         self._selectedSymbol = selectedSymbol
@@ -39,6 +41,7 @@ public struct SymbolView: View {
         let initialCategory = limitedCategories.count == 1 ? limitedCategories.first!.rawValue : "All Categories"
         self._selectedCategory = State(initialValue: initialCategory)
         self._searchText = State(initialValue: searchTerm)
+        self.withDismiss = withDismiss
     }
     var availableCategories: [Category] {
         loader.availableCategories(limitedCategories: limitedCategories)
@@ -115,7 +118,9 @@ public struct SymbolView: View {
                 ForEach(filteredSymbols, id: \.name) { symbol in
                     Button {
                         selectedSymbol = symbol.name
-                        dismiss()
+                        if withDismiss {
+                            dismiss()
+                        }
                     } label: {
                         Image(systemName: symbol.name)
                             .font(.system(size: 22))
